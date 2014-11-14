@@ -1,0 +1,38 @@
+<%= form_for @pocket, :html => { :class => "form-horizontal pocket" } do |f| %>
+
+    <% if @pocket.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@pocket.errors.count, "error") %> prohibited this pocket from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @pocket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pocket[:user_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :balance, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :balance, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pocket[:balance]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            pockets_path, :class => 'btn btn-default' %>
+
+<% end %>
