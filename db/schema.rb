@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114225259) do
+ActiveRecord::Schema.define(version: 20141115175450) do
 
   create_table "pockets", force: true do |t|
     t.integer  "user_id"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20141114225259) do
     t.string   "email"
     t.string   "password_salt"
     t.string   "password_salted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "w_transactions", force: true do |t|
+    t.integer  "pocket_id"
+    t.float    "amount"
+    t.integer  "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
